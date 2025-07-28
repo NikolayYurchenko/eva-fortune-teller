@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap');
+
+:root {
+  --bg-color: #f3e7d3;
+  --text-color: #3e2f1d;
+  --accent-color: #b9975b;
+}
+
+@keyframes breathing {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.02); } /* Увеличение на 2% */
+}
+html, body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  min-height: 100%;
+  position: relative;
+}
+
+/* Оборачиваем фон через псевдоэлемент */
+body::before {
+  content: "";
+  position: fixed;
+  width: 100%;
+  inset: 0;
+  background: url('/src/assets/bg.png') no-repeat center center fixed;
+  background-size: cover;
+  z-index: 0;
+  transform-origin: center;
+  animation: breathing 30s ease-in-out infinite;
+}
+
+/* Фиолетовый оверлей */
+body::after {
+  width: 100%;
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(68, 0, 90, 0.25);
+  z-index: 1;
+  pointer-events: none;
+}
+
+#app {
+  width: 100%;
+  position: relative;
+  z-index: 2; /* контент поверх */
+}
+
+h1, h2, h3 {
+  font-family: 'Playfair Display', serif;
+}

@@ -1,0 +1,40 @@
+# dependencies
+/node_modules
+
+# production build
+/dist
+/build
+
+# local env files
+.env
+.env.local
+.env.*.local
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# system files
+.DS_Store
+Thumbs.db
+
+# lock files (опционально, если не хочешь фиксировать зависимости)
+# package-lock.json
+# yarn.lock
+
+# test coverage
+/coverage
+
+# temp files
+*.tmp
