@@ -1,0 +1,71 @@
+Please provide the Network Team with the following validation steps:
+1. DNS Resolution
+
+Verify that each of the following hostnames resolves to a valid IP address:
+
+xmc.nam.msroot.net  
+xmc-engage.nam.msroot.net  
+issgusxwcmxcbv004.nam.msroot.net  
+issgusxwcmxcbv001.nam.msroot.net  
+issgusxwcmxcbv002.nam.msroot.net  
+issgusxwcmxcbv003.nam.msroot.net
+
+
+(These are the endpoints that the application cycles through when logging in.)
+
+2. Port Accessibility
+
+Check that TCP port 15001 is reachable for all above hosts:
+
+telnet <hostname> 15001
+
+
+or
+
+Test-NetConnection <hostname> -Port 15001
+
+
+For example:
+
+Test-NetConnection issgusxwcmxcbv004.nam.msroot.net -Port 15001
+
+3. Firewall / Proxy Rules
+
+Confirm that no firewall, proxy, or Bloomberg network policy is blocking or delaying:
+
+outbound HTTPS or SOAP traffic to the Engage/XMC URLs
+
+outbound TCP connections to port 15001
+
+DNS queries to the above hostnames
+
+4. Routing Check
+
+Perform a route trace from the Bloomberg desktop:
+
+tracert issgusxwcmxcbv004.nam.msroot.net
+
+
+We need to confirm there is no routing delay or network isolation right after the workstation reboot.
+
+5. Network Behavior After Reboot
+
+Since users cannot log in for 10–15 minutes after terminal restart, please check:
+
+Are DNS caches stale after reboot?
+
+Are Bloomberg terminals placed in a quarantined VLAN for the first 10–15 minutes?
+
+Are any Bloomberg post-boot security policies applied that may temporarily restrict external connectivity?
+
+Does the firewall apply a warm-up period before allowing outgoing traffic?
+
+This “warm-up window” fully aligns with the behavior we see in logs (application iterates through all endpoints and fails because none are reachable).
+
+Summary
+
+From the application side everything is operational:
+the client cycles through multiple Engage/XMC nodes, but cannot establish any connection until ~10–15 minutes after reboot.
+This strongly indicates a Bloomberg desktop network restriction during the initial boot period.
+
+Once the Network Team validates DNS, ports, routing, and Bloomberg network policies, we can proceed further if needed.
