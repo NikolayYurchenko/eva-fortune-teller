@@ -1,3 +1,66 @@
+Шаг 4 — создай TEST сабтаск в Jira (правильное оформление)
+
+Issue type: Sub-task
+Summary (пример): TEST - C162742-19692 Load ticket actions from config yml
+Assignee: независимый дев/тестер (не ты)
+Labels: testing, dev-testing (если у вас есть)
+Fix Version/Sprint: как у родителя (обычно наследуется)
+
+Description (шаблон — вставляй):
+
+Scope:
+
+Verify allowed actions are loaded from YAML via EngageTicketFlowProperties.
+
+Verify actions per TicketStatus match configuration.
+
+Regression: action execution works; ticketTemplate retrieval by requestTypeId still ok.
+
+Test Environment:
+
+DEV environment (укажи конкретный стенд/URL, если принято).
+
+Build/branch/PR: (ссылка/номер PR).
+
+Test Data / Preconditions:
+
+Provide config sample used in DEV (прямо вставь кусок YAML).
+
+Identify sample tickets: (IDs, если есть) или steps как создать.
+
+Test Cases:
+
+Attached test script: C162742-19692_TestCases.xlsx
+
+Execute TC-001…TC-031.
+
+Evidence requirements:
+
+Screenshots of results / response payloads.
+
+Logs for failures / startup binding (if negative scenarios executed).
+
+Exit criteria:
+
+All cases PASS, or defects logged + agreed disposition.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Please provide the Network Team with the following validation steps:
 1. DNS Resolution
 
